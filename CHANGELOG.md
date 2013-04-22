@@ -1,8 +1,11 @@
-# 0.2.3 (unreleased)
+# 0.3.0 (unreleased)
 
+* Parallelize multi-machine up on Vagrant 1.2+
 * Show proper configuration errors if an invalid configuration key
   is used.
 * Request confirmation on `vagrant destroy`, like normal VirtualBox + Vagrant.
+* If user data is configured, output is shown on "vagrant up" that
+  it is being set.
 
 # 0.2.2 (April 18, 2013)
 
