@@ -88,6 +88,11 @@ module VagrantPlugins
 
       attr_accessor :block_device_mapping
 
+      # Whether the instance is optimized for EBS I/O
+      #
+      # @return [Boolean]
+      attr_accessor :ebs_optimized
+
       def initialize(region_specific=false)
         @access_key_id          = UNSET_VALUE
         @ami                    = UNSET_VALUE
@@ -106,6 +111,7 @@ module VagrantPlugins
         @user_data              = UNSET_VALUE
         @use_iam_profile        = UNSET_VALUE
         @block_device_mapping   = {}
+        @ebs_optimized          = false
 
         # Internal state (prefix with __ so they aren't automatically
         # merged)

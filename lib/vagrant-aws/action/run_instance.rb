@@ -35,6 +35,7 @@ module VagrantPlugins
           tags                  = region_config.tags
           user_data             = region_config.user_data
           block_device_mapping  = region_config.block_device_mapping
+          ebs_optimized         = region_config.ebs_optimized
 
           # If there is no keypair then warn the user
           if !keypair
@@ -59,18 +60,20 @@ module VagrantPlugins
           env[:ui].info(" -- Security Groups: #{security_groups.inspect}") if !security_groups.empty?
           env[:ui].info(" -- User Data: #{user_data}") if user_data
           env[:ui].info(" -- Block Device Mapping: #{block_device_mapping}") if block_device_mapping
+          env[:ui].info(" -- Ebs optimized: #{ebs_optimized}") if ebs_optimized
 
           begin
             options = {
-              :availability_zone  => availability_zone,
-              :flavor_id          => instance_type,
-              :image_id           => ami,
-              :key_name           => keypair,
-              :private_ip_address => private_ip_address,
-              :subnet_id          => subnet_id,
-              :tags               => tags,
-              :user_data          => user_data,
-              :block_device_mapping => block_device_mapping
+              :availability_zone    => availability_zone,
+              :flavor_id            => instance_type,
+              :image_id             => ami,
+              :key_name             => keypair,
+              :private_ip_address   => private_ip_address,
+              :subnet_id            => subnet_id,
+              :tags                 => tags,
+              :user_data            => user_data,
+              :block_device_mapping => block_device_mapping,
+              :ebs_optimized        => ebs_optimized
             }
 
             if !security_groups.empty?
